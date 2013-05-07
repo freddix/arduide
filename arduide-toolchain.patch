@@ -1,0 +1,18 @@
+diff -aurN arduide-20130430.orig/env/Toolkit.cpp arduide-20130430/env/Toolkit.cpp
+--- arduide-20130430.orig/env/Toolkit.cpp	2013-04-30 22:23:21.554889674 +0200
++++ arduide-20130430/env/Toolkit.cpp	2013-04-30 22:24:31.275621370 +0200
+@@ -151,12 +151,8 @@
+ #if defined(Q_OS_WIN32) || defined(Q_OS_WIN64) || defined(Q_OS_DARWIN)
+     return QDir(hardwarePath()).filePath("tools/avr/bin");
+ #else
+-    if (toolkitVersionInt(ideApp->settings()->arduinoPath()) >= 100)
+-        return QDir(hardwarePath()).filePath("tools/avr/bin");
+-    else {
+-        // the AVR toolchain should be already present in the PATH
+-        return QString();
+-    }
++    // the AVR toolchain should be already present in the PATH
++    return QString();
+ #endif
+ }
+ QString Toolkit::avrTool(Toolkit::AVRTool tool)

@@ -1,13 +1,14 @@
 Summary:	IDE for Arduino
 Name:		arduide
-Version:	20121215
-Release:	3
+Version:	20130430
+Release:	2
 License:	GPL v2
 Group:		X11/Applications
 # git://gitorious.org/arduide/arduide.git
 # git archive --format=tar --prefix=arduide-20121215/ HEAD | xz -c > arduide-20121215.tar.xz
 Source0:	%{name}-%{version}.tar.xz
-# Source0-md5:	34b95794ef0518a174afd840744fb0af
+# Source0-md5:	3e6ae7106d6c73bcbad75d8db0b0c6d7
+Patch0:		%{name}-toolchain.patch
 URL:		http://mupuf.org/project/arduide/
 BuildRequires:	QtGui-devel
 BuildRequires:	QtNetwork-devel
@@ -25,6 +26,7 @@ prototyping platform.
 
 %prep
 %setup -q
+%patch0 -p1
 
 # fix non-standard paths
 %{__sed} -i "s|/arduino-ide/translations|/qt/translations|" CMakeLists.txt
